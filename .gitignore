@@ -1,0 +1,8 @@
+venv/bin
+venv/lib
+venv/share
+venv/__pycache__
+venv/etc
+venv/include
+
+
