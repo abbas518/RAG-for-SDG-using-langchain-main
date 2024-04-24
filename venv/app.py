@@ -1,5 +1,5 @@
 import streamlit as st
-from dotenv import load_dotenv
+#from dotenv import load_dotenv
 from PyPDF2 import PdfReader
 from langchain.text_splitter import CharacterTextSplitter
 from langchain.embeddings import OpenAIEmbeddings
@@ -8,7 +8,7 @@ from langchain.chat_models import ChatOpenAI
 from langchain.memory import ConversationBufferMemory
 from langchain.chains import ConversationalRetrievalChain
 from htmlTemplates import css, bot_template, user_template
-import os
+#import os
 
 def get_pdf_text(pdf_docs):
     text = ""
@@ -36,7 +36,7 @@ def get_vectorstore(text_chunks):
     return vectorstore
 
 def get_conversation_chain(vectorstore):
-    llm = ChatOpenAI()
+    llm = ChatOpenAI(api_key=st.secrets["OPENAI_API_KEY"])
     memory = ConversationBufferMemory(
         memory_key='chat_history', return_messages=True)
     conversation_chain = ConversationalRetrievalChain.from_llm(
@@ -64,7 +64,7 @@ def handle_userinput(user_question):
 
 def main():
     #load_dotenv()
-    os.environ["OPENAI_API_KEY"] = st.secrets["OPENAI_API_KEY"]
+   # os.environ["OPENAI_API_KEY"] = st.secrets["OPENAI_API_KEY"]
 
     st.set_page_config(page_title="RAG-for-SDG-using-langchain",
                        page_icon=":books:")
