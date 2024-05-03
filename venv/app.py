@@ -76,7 +76,7 @@ def main():
     st.header("Starbor'un Yapay Zeka botu")
 
     if st.session_state.chat_history:
-        for i, message in enumerate(st.session_state.chat_history):
+        for i, message in enumerate(reversed(st.session_state.chat_history)):
             if i % 2 == 0:
                 st.write(user_template.replace(
                     "{{MSG}}", message.content), unsafe_allow_html=True)
@@ -85,7 +85,7 @@ def main():
                     "{{MSG}}", message.content), unsafe_allow_html=True)
         st.session_state.chat_history = None 
                 
-    user_question = st.text_input("Bayilik, Starbor veya uygulama makinesi ile ilgili her türlü soruyu bana sorabilirsiniz.")
+    user_question = st.text_input("Bayilik, Starbor veya uygulama makinesi ile ilgili her türlü soruyu bana sorabilirsiniz.", key="user_input")
     if user_question:
         handle_userinput(user_question)
 
