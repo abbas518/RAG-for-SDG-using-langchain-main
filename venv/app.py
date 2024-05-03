@@ -53,10 +53,10 @@ def handle_userinput(user_question):
  
     for i, message in enumerate(reversed(st.session_state.chat_history)):
         if i % 2 == 0:
-            st.write(user_template.replace(
+            st.write(bot_template.replace(
                 "{{MSG}}", message.content), unsafe_allow_html=True)
         else:
-            st.write(bot_template.replace(
+            st.write(user_template.replace(
           
                  "{{MSG}}", message.content), unsafe_allow_html=True)
     st.session_state.chat_history = None 
