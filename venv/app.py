@@ -85,11 +85,10 @@ def main():
             else:
                 st.write(bot_template.replace(
                     "{{MSG}}", message.content), unsafe_allow_html=True)
-        st.session_state.chat_history = None 
-                
-    user_question = st.text_input("Bayilik, Starbor veya uygulama makinesi ile ilgili her türlü soruyu bana sorabilirsiniz.", key="user_input")
-    if user_question:
-        handle_userinput(user_question)
+    else:          
+        user_question = st.text_input("Bayilik, Starbor veya uygulama makinesi ile ilgili her türlü soruyu bana sorabilirsiniz.", key="user_input")
+        if user_question:
+            handle_userinput(user_question)
 
     with st.sidebar:
         st.subheader("Dosyalarınız")
