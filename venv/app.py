@@ -66,7 +66,7 @@ def main():
     #load_dotenv()
    # os.environ["OPENAI_API_KEY"] = st.secrets["OPENAI_API_KEY"]
 
-    st.set_page_config(page_title="RAG-for-SDG-using-langchain",
+    st.set_page_config(page_title="Starbor'un Yapay Zeka botu",
                        page_icon=":books:")
     st.write(css, unsafe_allow_html=True)
 
@@ -75,17 +75,17 @@ def main():
     if "chat_history" not in st.session_state:
         st.session_state.chat_history = None
 
-    st.header("RAG-for-SDG-using-langchain")
-    user_question = st.text_input("Ask a question about your documents:")
+    st.header("Starbor'un Yapay Zeka botu")
+    user_question = st.text_input("Bayilik, Starbor veya uygulama makinesi ile ilgili her türlü soruyu bana sorabilirsiniz.")
     if user_question:
         handle_userinput(user_question)
 
     with st.sidebar:
-        st.subheader("Your documents")
+        st.subheader("Dosyalarınız")
         pdf_docs = st.file_uploader(
-            "Upload your PDFs here and click on 'Process'", accept_multiple_files=True)
-        if st.button("Process"):
-            with st.spinner("Processing"):
+            "PDF'lerinizi buraya yükleyin ve 'İşlem'e tıklayın", accept_multiple_files=True)
+        if st.button("İşlem"):
+            with st.spinner("İşleme"):
                 # get pdf text
                 raw_text = get_pdf_text(pdf_docs)
 

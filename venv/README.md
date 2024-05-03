@@ -11,6 +11,8 @@ workflow:
 ## Instructions
  To use this application :
  - Clone the repository
+ - Create and activate a Virtual environment
+ - Create .env file and add openai api keys
  - Install dependencies
    ```
    pip install -r requirements.txt
