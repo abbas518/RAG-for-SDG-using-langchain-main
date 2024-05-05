@@ -91,7 +91,7 @@ def main():
             handle_userinput(user_question)
 
     with st.sidebar:
-        st.subheader("Dosyalarınız")
+        st.subheader("SDG Documents")
         pdf_docs = st.file_uploader(
             "Upload the SDG Documents in PDF and click on Process", accept_multiple_files=True)
         if st.button("process"):
