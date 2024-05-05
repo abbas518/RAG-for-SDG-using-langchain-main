@@ -66,7 +66,7 @@ def main():
     #load_dotenv()
    # os.environ["OPENAI_API_KEY"] = st.secrets["OPENAI_API_KEY"]
 
-    st.set_page_config(page_title="Starbor'un Yapay Zeka botu",
+    st.set_page_config(page_title="RAG for SDG",
                        page_icon=":books:")
     st.write(css, unsafe_allow_html=True)
 
@@ -75,7 +75,7 @@ def main():
     if "chat_history" not in st.session_state:
         st.session_state.chat_history = None
 
-    st.header("Starbor'un Yapay Zeka botu")
+    st.header("RAG for SDG")
 
     if st.session_state.chat_history:
         for i, message in enumerate(reversed(st.session_state.chat_history)):
@@ -86,16 +86,16 @@ def main():
                 st.write(user_template.replace(
                     "{{MSG}}", message.content), unsafe_allow_html=True)
     else:          
-        user_question = st.text_input("Bayilik, Starbor veya uygulama makinesi ile ilgili her türlü soruyu bana sorabilirsiniz.", key="user_input")
+        user_question = st.text_input("You can ask me any question regarding the SDG documents you uploaded", key="user_input")
         if user_question:
             handle_userinput(user_question)
 
     with st.sidebar:
         st.subheader("Dosyalarınız")
         pdf_docs = st.file_uploader(
-            "PDF'lerinizi buraya yükleyin ve 'İşlem'e tıklayın", accept_multiple_files=True)
-        if st.button("İşlem"):
-            with st.spinner("İşleme"):
+            "Upload the SDG Documents in PDF and click on Process", accept_multiple_files=True)
+        if st.button("process"):
+            with st.spinner("processing"):
                 # get pdf text
                 raw_text = get_pdf_text(pdf_docs)
 
